@@ -11,7 +11,7 @@ alba_url = "http://www.alba.co.kr"
 def save_to_file(company,jobs):
   file = open(f"{company}.csv",mode="w")
   writer = csv.writer(file)
-  writer.writerow(["근무지","지점","포지션","근무시간","급여"])
+  writer.writerow(["근무지","지점","포지션","근무시간","급여","등록일"])
 
   for job in jobs:
     writer.writerow(list((job.values())))
@@ -29,6 +29,7 @@ def extract_job(text, link):
   titles = soup.find_all("span",{"class":"title"})
   times = soup.find_all("td",{"class":"data"})
   pays = soup.find_all("td",{"class":"pay"})
+  uploads = soup.find_all("td",{"class":"regDate"})
   for i in range(len(locations)):
     row = {
       '근무지' : locations[i].text,
@@ -36,6 +37,7 @@ def extract_job(text, link):
       '포지션' : titles[i].text,
       '근무시간' : times[i].text,
       '급여' : pays[i].text
+      '등록일' : uploads[i].text
     }
     jobs.append(row)
   save_to_file(text,jobs)
