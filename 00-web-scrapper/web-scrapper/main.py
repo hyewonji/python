@@ -9,6 +9,6 @@ def home():
 @app.route("/report")
 def report():
   word = request.args.get('word')
-  return f"You are looking for a job in {word}"
+  return render_template("report.html",searchingBy=word )
 
 app.run(host = "0.0.0.0") 
