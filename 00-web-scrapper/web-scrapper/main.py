@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask("SuperScrapper")
 
@@ -6,5 +6,9 @@ app = Flask("SuperScrapper")
 def home(): 
   return render_template("potato.html")
 
-app.run(host = "0.0.0.0") 
+@app.route("/report")
+def report():
+  word = request.args.get('word')
+  return f"You are looking for a job in {word}"
 
+app.run(host = "0.0.0.0") 
