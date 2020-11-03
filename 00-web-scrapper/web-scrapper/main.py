@@ -14,16 +14,19 @@ def report():
   word = request.args.get('word')
   if word:
     word = word.lower()
-    fromDB = db.get(word)
-    if fromDB:
-      pass
+    existingJobs = db.get(word)
+    if existingJobs:
+      jobs = existingJobs
     else:
       jobs = get_jobs(word)
       db[word] = jobs
   else:
     return redirect("/")
-  return render_template("report.html",searchingBy=word,
-  resultsNumber=len(jobs) 
+  return render_template(
+    "report.html",
+    searchingBy=word,
+    resultsNumber=len(jobs),
+    jobs=jobs
   )
 
-app.run(host = "0.0.0.0") 
+app.run(host = "0.0.0.0")  
