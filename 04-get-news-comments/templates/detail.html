@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column
+    }
+    header{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-item: center;
+    }
+    section{
+      display:flex;
+      flex-direction: column;
+    }
+    section>div{
+      display:flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>{{data.title}}</h1>
+    <div>
+      <span>{{data.points}} points | </span>
+      <span>By{{data.author}} | </span>
+    </div> 
+    <div>
+      <a href={{data.url}} target="_blank">{{data.url}}</a>
+    </div> 
+  </header>
+  <section>
+    {% for i in comments %}
+      <div>
+        <b>{{i.author}}</b>
+        <span>{{i.text}}</span>
+      </div>
+      <hr />
+    {% endfor %}
+  </section>  
+  <!--{% for comment in comments %}
+  <span>{{comment.author}}</span>
+  <span>{{comment.text}}</span>
+  {% endfor %}-->
+</body>
+
+</html>
