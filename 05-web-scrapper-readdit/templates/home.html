@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+<style>
+  *{
+    box-sizing: border-box;
+  }
+  body{
+    display: flex;
+    flex-direction: column;
+    align-item: center;
+    justify-content: center;
+  }
+  section{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    padding: 20px 30px;
+    border: 1px solid #EEEEEE;
+  }
+  botton{
+    background: skyblue;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    width: 200px;
+  }
+</style>
+</head>
+
+<body>
+  <h1>Reddit Reader</h1>
+  <span>A service to aggregate all your favorite subreddits</span>
+  <section>
+    <span>Select the subreddits you're interested on:</span>
+    <form action="/read" method="get">
+      <ul>
+        {% for subreddit in subreddits %}
+        <li><input type="checkbox" name="{{subreddit}}" value="on" > r/{{subreddit}}</li>
+        {% endfor %}
+      </ul>
+      <button>Aggregate</button>
+    </form>
+  </section>
+</body>
+
+</html>
