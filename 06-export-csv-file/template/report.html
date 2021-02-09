@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Search</title>
+    <style>
+      body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-item: center;
+      }
+      section{
+        padding: 50px;
+      }
+      section > div{
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Remote Jobs</h1>
+    <h3>{{resultsNumber}} {{searchingBy}} jobs found.</h3>
+    <br />
+    <a href="/export?word={{searchingBy}}">Export to CSV</a>
+    <a href="/">← Go back</a>
+    <section>
+      {% for job in jobs %}
+        <div>
+          <span>{{job.title}}</span>
+          <span>{{job.company}}</span>
+          <a href="{{job.apply_link}}" target="_black">Apply</a> 
+          <hr />
+        </div>
+      {% endfor %}
+
+    </section>
+  </body>
+</html>
